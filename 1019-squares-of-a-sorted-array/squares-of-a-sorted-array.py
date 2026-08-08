@@ -1,9 +1,10 @@
 class Solution:
     def sortedSquares(self, nums: List[int]) -> List[int]:
-        res = [0]*len(nums)
+        n = len(nums)
+        res = [0]*n    
         left = 0
-        right= len(nums)-1
-        pos= len(nums)-1
+        right= n-1
+        pos= n-1
         while left <= right:
             if abs(nums[left]) > abs(nums[right]):
                 res[pos] = nums[left]*nums[left]
