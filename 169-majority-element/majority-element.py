@@ -1,12 +1,15 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        hash_map = {}
-        for num in nums:
-            if num in hash_map:
-                hash_map[num] += 1
+        n=len(nums)
+        if n == 1:
+            return nums[0]
+        nums.sort()
+        slow = 0
+        count = 1
+        for i in range(n-1):
+            if nums[i] == nums[i+1]:
+                count += 1
             else:
-                hash_map[num] = 1
-        for key,val in hash_map.items():
-            if val > len(nums)//2:
-                return key
-        
+                count = 1
+            if count > n/2:
+                return nums[i]
