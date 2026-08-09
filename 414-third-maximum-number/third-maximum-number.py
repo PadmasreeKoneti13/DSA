@@ -1,11 +1,13 @@
 class Solution:
     def thirdMax(self, nums: List[int]) -> int:
-        first_max = max(nums)
-        nums = [x for x in nums if x != first_max]
-        if not nums:
-            return first_max
-        second_max = max(nums)
-        nums = [x for x in nums if x != second_max]
-        if nums:
-            return max(nums)
-        return first_max
+        first = second = third = float('-inf')
+        for num in nums:
+            if num in (first,second,third):
+                continue
+            if num > first:
+                first,second,third = num,first,second
+            elif num > second:
+                second,third = num,second
+            elif num > third:
+                third = num
+        return third if third != float('-inf') else first 
